@@ -18,6 +18,9 @@ class Publisher(models.Model):
 class Author(models.Model):
     name = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.name
+
 class AuthorDetail(models.Model):
     sex = models.BooleanField(max_length=1, choices=((0, '男'),(1, '女'),))
     email = models.EmailField()
@@ -30,3 +33,6 @@ class Book(models.Model):
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)
     publication_date = models.DateField()
+
+    def __str__(self):
+        return self.title
